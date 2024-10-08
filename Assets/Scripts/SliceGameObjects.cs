@@ -16,8 +16,8 @@ public class SliceGameObjects : MonoBehaviour {
     private float saberSize = 0f;
     private float saberSpeed = 3f;
 
-    public Transform planeDebug;
-    public GameObject cube;
+    //public Transform planeDebug;
+    //public GameObject cube;
 
     public bool swordState = false;
 
@@ -103,12 +103,10 @@ public class SliceGameObjects : MonoBehaviour {
     private void SetSlicedObject(GameObject obj) {
         MeshCollider mc = obj.AddComponent<MeshCollider>();
         mc.convex = true;
-        Material[] materials = new Material[5];
+        Material[] materials = new Material[3];
         materials[0] = slicedMat;
         materials[1] = slicedMat;
         materials[2] = slicedMat;
-        materials[3] = slicedMat;
-        materials[4] = slicedMat;
         obj.GetComponent<MeshRenderer>().materials = materials;
         obj.AddComponent<Rigidbody>();
 
