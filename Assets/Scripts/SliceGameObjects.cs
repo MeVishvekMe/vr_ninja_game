@@ -41,7 +41,7 @@ public class SliceGameObjects : MonoBehaviour {
     private void Update() {
         
         bool hashHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, sliceableLayer);
-        if (hashHit) {
+        if (hashHit && swordState) {
             GameObject target = hit.transform.gameObject;
             Debug.Log("Hit " + target.name);
             Slice(target);
@@ -68,12 +68,12 @@ public class SliceGameObjects : MonoBehaviour {
             upperHull.transform.position = target.transform.position;
             upperHull.transform.localScale = target.transform.localScale;
             SetSlicedObject(upperHull);
-            upperHull.layer = target.layer;
+            Destroy(upperHull, 2.5f);
             GameObject lowerHull = hull.CreateLowerHull();
             lowerHull.transform.position = target.transform.position;
             lowerHull.transform.localScale = target.transform.localScale;
             SetSlicedObject(lowerHull);
-            lowerHull.layer = target.layer;
+            Destroy(lowerHull, 2.5f);
             Destroy(target);
         }
     }
@@ -109,11 +109,10 @@ public class SliceGameObjects : MonoBehaviour {
         materials[2] = slicedMat;
         obj.GetComponent<MeshRenderer>().materials = materials;
         obj.AddComponent<Rigidbody>();
-
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         rb.useGravity = false;
-        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        obj.GetComponent<Rigidbody>().AddExplosionForce(2f, obj.transform.position, 1);
+        rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        obj.GetComponent<Rigidbody>().AddExplosionForce(4000f, obj.transform.position, 1);
         //obj.layer = sliceableLayer;
     }
 }

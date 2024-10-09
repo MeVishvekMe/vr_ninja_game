@@ -11,12 +11,20 @@ public class EnemyShip : MonoBehaviour {
 
     private float _time = -20f;
 
+    // Enemy Movement
+    public float speed = 2f; // Speed of movement
+    public Vector3 pointA = new Vector3(20f, 20f, 25f);
+    public Vector3 pointB = new Vector3(-20f, -20f, 25f);
+    private Vector3 targetPosition;
+
 
 
     private void Start() {
         spawnPoints = new Transform[2];
         spawnPoints[0] = leftSpawnPoint;
         spawnPoints[1] = rightSpawnPoint;
+
+
     }
 
     private void Update() {
@@ -29,4 +37,6 @@ public class EnemyShip : MonoBehaviour {
             _time = 0;
         }
     }
+
+    
 }
