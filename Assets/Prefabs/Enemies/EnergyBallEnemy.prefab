@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: 210520222046046300}
   - component: {fileID: 1803558703655316461}
   - component: {fileID: 801106297943291257}
+  - component: {fileID: 5413627325933967152}
   - component: {fileID: 6424097640574373134}
   m_Layer: 0
   m_Name: EnergyBallEnemy
@@ -933,6 +934,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5413627325933967152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643228583845898391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070ce703edab5f24fa160b4fafef77c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  playerTransform: {fileID: 0}
+  minDistance: 20
+  maxDistance: 50
 --- !u!114 &6424097640574373134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,9 +967,6 @@ MonoBehaviour:
   spawnPoint: {fileID: 2640328819175237273}
   playerTransform: {fileID: 0}
   slider: {fileID: 2951072677607900302}
-  speed: 3
-  pointA: {x: 20, y: 20, z: 25}
-  pointB: {x: -20, y: 5, z: 25}
 --- !u!1 &5960810929740450080
 GameObject:
   m_ObjectHideFlags: 0
