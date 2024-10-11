@@ -36,7 +36,7 @@ public class Lift : MonoBehaviour {
                 liftShouldMove = false;
                 liftMove.action.performed -= MoveLift;
                 Destroy(objectToDestroy);
-                _audioSource.Stop();
+                
             }
             else {
                 _rb.velocity = new Vector3(_rb.velocity.x, 20f * Time.deltaTime, _rb.velocity.z);
@@ -52,6 +52,6 @@ public class Lift : MonoBehaviour {
 
     private void MoveLift(InputAction.CallbackContext context) {
         liftShouldMove = true;
-        _audioSource.Play();
+        
     }
 }

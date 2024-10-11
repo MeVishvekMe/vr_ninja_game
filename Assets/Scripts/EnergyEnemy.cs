@@ -17,6 +17,9 @@ public class EnergyEnemy : MonoBehaviour {
     public Vector3 pointB = new Vector3(-20f, 5f, 25f);
     private Vector3 targetPosition;
 
+    public float minDistance = 20f;
+    public float maxDistance = 50f;
+
     void Start() {
         _time = -20f;
         playerTransform = Camera.main.transform;
@@ -26,6 +29,7 @@ public class EnergyEnemy : MonoBehaviour {
     }
 
     void Update() {
+        transform.LookAt(playerTransform);
         _time += Time.deltaTime;
         if(_time >= 5f) {
             GameObject gb = Instantiate(energyBall, spawnPoint.position, Quaternion.identity);
@@ -36,9 +40,18 @@ public class EnergyEnemy : MonoBehaviour {
     }
 
     private Vector3 GetRandomTarget() {
-        float x = Random.Range(pointB.x, pointA.x);
-        float y = Random.Range(pointB.y, pointA.y);
-        return new Vector3(x, y, pointA.z);
+        float theta = 2f * Mathf.PI * Random.value; // Azimuthal angle
+        float phi = Mathf.Acos(Random.value);       // Polar angle
+
+        // Generate random radius between minDistance and maxDistance
+        float r = minDistance + (maxDistance - minDistance) * Random.value;
+
+        // Convert to Cartesian coordinates
+        float x = r * Mathf.Sin(phi) * Mathf.Cos(theta);
+        float y = r * Mathf.Cos(phi);
+        float z = r * Mathf.Sin(phi) * Mathf.Sin(theta);
+
+        return new Vector3(x, y, z);
     }
 
     private IEnumerator MoveToTarget() {
@@ -50,7 +63,7 @@ public class EnergyEnemy : MonoBehaviour {
             }
 
             // Wait a moment at the target position
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
 
             // Get a new random target
             targetPosition = GetRandomTarget();

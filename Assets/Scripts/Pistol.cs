@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +9,13 @@ public class Pistol : MonoBehaviour {
     public Transform bulletSpawnPoint;
     public GameObject bulletObject;
 
+    public TextMeshProUGUI bulletText;
+
     private float _bulletCount = 0;
     private bool canShoot = true;
     private float rotationSpeed = 300f;
+
+    public Animator animator;
 
     public InputActionReference shootRef;
 
@@ -26,18 +31,7 @@ public class Pistol : MonoBehaviour {
     }
 
     private void Update() {
-        
-        if (_bulletCount > 5) {
-            transform.Rotate(rotationSpeed * Time.deltaTime, 0f, 0f);
-            canShoot = false;
-            if (transform.localRotation.x > 360f) {
-                transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-                _bulletCount = 0;
-                canShoot = true;
-            }
-            
-        }
-        
+        bulletText.text = (6 - _bulletCount).ToString();
     }
 
     private void Shoot(InputAction.CallbackContext context) {
@@ -53,5 +47,19 @@ public class Pistol : MonoBehaviour {
             Destroy(go, 7f);
             _bulletCount++;
         }
+        if (_bulletCount == 6) {
+            StartCoroutine(GunReloadCou());
+        }
+    }
+
+    IEnumerator GunReloadCou() {
+        bulletText.enabled = false;
+        _bulletCount++;
+        canShoot = false;
+        animator.Play("GunReloadAnimation");
+        yield return new WaitForSecondsRealtime(1f);
+        canShoot = true;
+        _bulletCount = 0;
+        bulletText.enabled = true;
     }
 }
