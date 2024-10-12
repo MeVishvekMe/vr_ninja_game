@@ -9,13 +9,11 @@ public class EnemyMovement : MonoBehaviour {
 
     public Transform playerTransform;
 
-    public float minDistance = 20f;
-    public float maxDistance = 50f;
+    public float minDistance = 50f;
+    public float maxDistance = 100f;
 
     void Start() {
-        
         playerTransform = Camera.main.transform;
-
         targetPosition = GetRandomTarget();
         StartCoroutine(MoveToTarget());
     }

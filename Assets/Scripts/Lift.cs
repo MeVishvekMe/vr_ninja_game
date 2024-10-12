@@ -19,7 +19,6 @@ public class Lift : MonoBehaviour {
     }
 
     private void OnEnable() {
-
         liftMove.action.Enable();
         liftMove.action.performed += MoveLift;
     }
@@ -36,12 +35,10 @@ public class Lift : MonoBehaviour {
                 liftShouldMove = false;
                 liftMove.action.performed -= MoveLift;
                 Destroy(objectToDestroy);
-                
             }
             else {
-                _rb.velocity = new Vector3(_rb.velocity.x, 20f * Time.deltaTime, _rb.velocity.z);
-
                 _rb.isKinematic = false;
+                _rb.velocity = new Vector3(_rb.velocity.x, 2f, _rb.velocity.z);
             }
             
         }

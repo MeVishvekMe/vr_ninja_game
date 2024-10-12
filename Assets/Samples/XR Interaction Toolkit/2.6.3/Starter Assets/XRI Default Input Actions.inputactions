@@ -718,6 +718,17 @@
                     "action": "LiftButton",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc717ae7-3b47-45cd-93af-fe4c685b2bce",
+                    "path": "<XRSimulatedController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LiftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1550,6 +1561,17 @@
                     "name": "",
                     "id": "7e27f00f-a247-46e4-9bb9-48bdf660219a",
                     "path": "<QuestProTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaberButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8c69be5-b836-4eae-97ea-b7d4351386fb",
+                    "path": "<XRSimulatedController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

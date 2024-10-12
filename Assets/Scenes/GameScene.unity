@@ -2059,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4986,6 +4986,8 @@ GameObject:
   - component: {fileID: 5169660260751131059}
   - component: {fileID: 6943044105791780217}
   - component: {fileID: 8888515376136656045}
+  - component: {fileID: 8888515376136656046}
+  - component: {fileID: 8888515376136656047}
   m_Layer: 0
   m_Name: Speedster
   m_TagString: Untagged
@@ -5015,11 +5017,44 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8888515376136656046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888515376136656044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070ce703edab5f24fa160b4fafef77c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  playerTransform: {fileID: 0}
+  minDistance: 50
+  maxDistance: 100
+--- !u!114 &8888515376136656047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888515376136656044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51af64db00f0b184a919b1cd6f3ef531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftLeftPoint: {fileID: 1092751727}
+  leftPoint: {fileID: 633423370}
+  rightPoint: {fileID: 736474551}
+  rightRightPoint: {fileID: 2040752087}
+  laser: {fileID: 1841928727397305740, guid: e5a78999730c26a4daec56e373ab7cc7, type: 3}
 --- !u!4 &9147133667747473357
 Transform:
   m_ObjectHideFlags: 0

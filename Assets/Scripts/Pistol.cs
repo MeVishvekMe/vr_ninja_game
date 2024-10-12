@@ -11,9 +11,8 @@ public class Pistol : MonoBehaviour {
 
     public TextMeshProUGUI bulletText;
 
-    private float _bulletCount = 0;
-    private bool canShoot = true;
-    private float rotationSpeed = 300f;
+    private int _bulletCount = 0;
+    private bool _canShoot = true;
 
     public Animator animator;
 
@@ -35,9 +34,9 @@ public class Pistol : MonoBehaviour {
     }
 
     private void Shoot(InputAction.CallbackContext context) {
-        if (canShoot) {
+        if (_canShoot) {
             // Use the gun's forward direction for bullet direction
-            Quaternion bulletRotation = Quaternion.LookRotation(transform.forward) * Quaternion.Euler(90, 0, 0); ;
+            var bulletRotation = Quaternion.LookRotation(transform.forward) * Quaternion.Euler(90, 0, 0); ;
 
             // Instantiate the bullet
             GameObject go = Instantiate(bulletObject, bulletSpawnPoint.position, bulletRotation);
@@ -55,10 +54,10 @@ public class Pistol : MonoBehaviour {
     IEnumerator GunReloadCou() {
         bulletText.enabled = false;
         _bulletCount++;
-        canShoot = false;
+        _canShoot = false;
         animator.Play("GunReloadAnimation");
         yield return new WaitForSecondsRealtime(1f);
-        canShoot = true;
+        _canShoot = true;
         _bulletCount = 0;
         bulletText.enabled = true;
     }
